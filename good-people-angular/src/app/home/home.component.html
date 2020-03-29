@@ -10,15 +10,60 @@
 
     <nb-layout-column>
         <nb-card>
-            <nb-card-header>Welcome</nb-card-header>
+            <nb-card-header>Create user</nb-card-header>
             <nb-card-body>
-                Name: <input type="text" [(ngModel)]="name" nbInput placeholder="Name">
+                First Name: <input type="text" [(ngModel)]="firstName" nbInput placeholder="First Name">
+                Last Name: <input type="text" [(ngModel)]="lastName" nbInput placeholder="Last Name">
+            </nb-card-body>
+            <nb-card-body>
+                Address Line 1 <input type="text" [(ngModel)]="addressLine1" nbInput placeholder="Address Line 1">
+                Address Line 2 <input type="text" [(ngModel)]="addressLine2" nbInput placeholder="Address Line 2">
                 Postcode: <input type="text" [(ngModel)]="postcode" nbInput placeholder="Postcode">
             </nb-card-body>
+            <nb-card-body>
+                Phone No: <input type="text" [(ngModel)]="phoneNo" nbInput placeholder="Phone No">
+            </nb-card-body>
+            <nb-card-body>
+                Email: <input type="text" [(ngModel)]="email" nbInput placeholder="Email">
+            </nb-card-body>
             <nb-card-footer>
-                <button nbButton (click)="confirm()">Confirm</button>
+                <button nbButton (click)="createUser()">Create user</button>
             </nb-card-footer>
         </nb-card>
+
+        <nb-card>
+            <nb-card-header>Want to help?</nb-card-header>
+            <nb-card-body>
+                <div>Provide the medicine that you have</div>
+            </nb-card-body>
+            <nb-card-footer>
+                <button nbButton>Confirm</button>
+            </nb-card-footer>
+        </nb-card>
+
+        <nb-card>
+            <nb-card-header>Need help?</nb-card-header>
+            <nb-card-body>
+                <div>Provide the medicine that you need</div>
+            </nb-card-body>
+            <nb-card-footer>
+                <button nbButton>Confirm</button>
+            </nb-card-footer>
+        </nb-card>
+
+        <nb-card>
+            <nb-card-header>Check Postcode</nb-card-header>
+            <nb-card-body>
+                <div>Check your postcode and pin where you are</div>
+            </nb-card-body>
+            <nb-card-body>
+                Postcode: <input type="text" [(ngModel)]="postcodeToCheck" nbInput placeholder="Postcode">
+            </nb-card-body>
+            <nb-card-footer>
+                <button nbButton (click)="checkPostcode()">Check Postcode</button>
+            </nb-card-footer>
+        </nb-card>
+        
 
         <app-map #map></app-map>
     </nb-layout-column>
