@@ -1,4 +1,4 @@
-package com.goodpeople.app.helloworld;
+package com.goodpeople.app.person;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

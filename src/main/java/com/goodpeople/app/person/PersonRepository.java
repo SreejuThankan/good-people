@@ -1,4 +1,4 @@
-package com.goodpeople.app.helloworld;
+package com.goodpeople.app.person;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
