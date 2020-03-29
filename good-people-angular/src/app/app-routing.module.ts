@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,6 +12,10 @@ import {
 } from '@nebular/auth';
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+  },
   {
     path: 'auth',
     component: NbAuthComponent,
@@ -40,7 +45,9 @@ export const routes: Routes = [
         component: NbResetPasswordComponent,
       },
     ],
-  }
+  },
+  { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  { path: '**', redirectTo: 'pages' }
 ];
 
 @NgModule({
