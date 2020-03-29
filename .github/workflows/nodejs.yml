@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-      run: |
+    - run: |
         cd good-people-angular
         ls -rtl
         chmod 755 *
