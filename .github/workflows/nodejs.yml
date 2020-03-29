@@ -24,12 +24,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd good-people-angular
-    - run: ls -rtl
-    - run: chmod 755 *
-    - run: ls -rtl
-    - run: npm install
-    - run: npm install @angular/cli
-    - run: npm run-script ng build 
-      env:
-        CI: true
+      run: |
+        cd good-people-angular
+        ls -rtl
+        chmod 755 *
+        ls -rtl
+        npm install
+        npm install @angular/cli
+        npm run-script ng build 
+        env:
+          CI: true
