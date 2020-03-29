@@ -1,0 +1,32 @@
+<nb-layout>
+    <nb-layout-header fixed>
+        Good People
+        <nb-actions>
+            <nb-action>
+                <button nbButton routerLink="/auth/login">Login</button>
+            </nb-action>
+        </nb-actions>
+    </nb-layout-header>
+
+    <nb-layout-column>
+        <nb-card>
+            <nb-card-header>Users</nb-card-header>
+            <nb-card-body>
+                <div *ngIf="users.length == 0; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>Empty</ng-template>
+                <ng-template #elseBlock>
+                    <nb-list>
+                        <nb-list-item *ngFor="let user of users">
+                            Name: {{ user.name }}, Address: {{ user.address }}
+                        </nb-list-item>
+                    </nb-list>
+                </ng-template>
+            </nb-card-body>
+            <nb-card-footer>
+                <button nbButton>Confirm</button>
+            </nb-card-footer>
+        </nb-card>
+    </nb-layout-column>
+
+    <nb-layout-footer fixed>Created with ♥ by SRJ 2020</nb-layout-footer>
+</nb-layout>
