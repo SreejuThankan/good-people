@@ -10,22 +10,17 @@
 
     <nb-layout-column>
         <nb-card>
-            <nb-card-header>Users</nb-card-header>
+            <nb-card-header>Welcome</nb-card-header>
             <nb-card-body>
-                <div *ngIf="users.length == 0; then thenBlock else elseBlock"></div>
-                <ng-template #thenBlock>Empty</ng-template>
-                <ng-template #elseBlock>
-                    <nb-list>
-                        <nb-list-item *ngFor="let user of users">
-                            Name: {{ user.name }}, Address: {{ user.address }}
-                        </nb-list-item>
-                    </nb-list>
-                </ng-template>
+                Name: <input type="text" [(ngModel)]="name" nbInput placeholder="Name">
+                Postcode: <input type="text" [(ngModel)]="postcode" nbInput placeholder="Postcode">
             </nb-card-body>
             <nb-card-footer>
-                <button nbButton>Confirm</button>
+                <button nbButton (click)="confirm()">Confirm</button>
             </nb-card-footer>
         </nb-card>
+
+        <app-map #map></app-map>
     </nb-layout-column>
 
     <nb-layout-footer fixed>Created with ♥ by SRJ 2020</nb-layout-footer>

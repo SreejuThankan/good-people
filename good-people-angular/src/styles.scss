@@ -3,6 +3,8 @@
 @import '~@nebular/theme/styles/globals';
 @import '~@nebular/auth/styles/globals';
 
+@import "~leaflet/dist/leaflet.css";
+
 @include nb-install() {
   @include nb-theme-global();
   @include nb-auth-global();

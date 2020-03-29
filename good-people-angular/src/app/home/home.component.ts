@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { MapComponent } from './../map/map.component';
+import { PostcodeService } from './../@core/services/postcode.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  users = [
-    {name: 'Sreewho', address: '4th floor'}
-  ];
+  @ViewChild('map') mapComponent: MapComponent;
 
-  constructor() { }
+  name: string;
+  postcode: string;
+
+  constructor(
+    private postcodeService: PostcodeService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  confirm(): void {
+    this.postcodeService.getPostCode(this.postcode).subscribe(data => {
+      this.mapComponent.setView(data.result.latitude, data.result.longitude);
+    });
   }
 
 }
