@@ -9,19 +9,11 @@ export class HomeComponent implements OnInit {
 
   users = [
     {name: 'Sreewho', address: '4th floor'}
-  ]
+  ];
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  confirmHelpOthers(): void {
-
-  }
-
-  confirmNeedHelp(): void {
-
   }
 
 }
