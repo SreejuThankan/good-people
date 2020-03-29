@@ -33,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     NbButtonModule,
     NbIconModule,
     NbListModule,
+    NbEvaIconsModule,
     NbInputModule,
     NbCardModule,
     NbUserModule,
