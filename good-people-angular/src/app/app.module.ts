@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbButtonModule, NbSidebarModule, NbIconModule, NbUserModule, NbActionsModule, NbMenuModule, NbCardModule, NbListModule, NbTreeGridModule, NbInputModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbButtonModule, NbSidebarModule, NbIconModule, NbUserModule, NbActionsModule, NbMenuModule, NbCardModule, NbListModule, NbTreeGridModule, NbInputModule, NbToastrModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
 import { HomeComponent } from './home/home.component';
@@ -36,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     NbEvaIconsModule,
     NbInputModule,
     NbCardModule,
+    NbToastrModule.forRoot(),
     NbUserModule,
     NbAuthModule.forRoot({
       strategies: [
