@@ -32,5 +32,3 @@ jobs:
         npm install
         npm install @angular/cli
         npm run-script ng build 
-        env:
-          CI: true
