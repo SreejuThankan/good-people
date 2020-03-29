@@ -1,16 +1,23 @@
 package com.goodpeople.app.mapping;
 
 import com.goodpeople.app.httprequester.HttpRequesterService;
+import com.goodpeople.app.medicine.Medicine;
+import com.goodpeople.app.person.Person;
+import com.goodpeople.app.person.PersonRepository;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -21,7 +28,25 @@ public class MappingServiceOpenStreetMapImpl implements MappingService {
 
     private final PostCodeIoService postCodeIoService;
     private final HttpRequesterService httpRequesterService;
+    private final PersonRepository personRepository;
 
+    @Override
+    public List<Person> get10QuickestDeliveryPeople(Person person, Medicine requiredMedicine) {
+        String city = person.getAddress().getPostCodeDetails().getCity();
+        List<Person> peopleInCityWithOwnedMedicine = personRepository.findPeopleInCityWithOwnedMedicine(city, requiredMedicine.getId());
+
+        Function<Person, RouteSummary> routeSummaryFunc =
+                deliveryPerson -> getRouteSummaryBetween(deliveryPerson.getPostcode(),
+                                                         person.getPostcode(),
+                                                         deliveryPerson.getRouteTypes().iterator().next());
+        return peopleInCityWithOwnedMedicine.stream()
+                                            .collect(Collectors.toMap(Function.identity(), routeSummaryFunc))
+                                            .entrySet().stream()
+                                            .sorted(Comparator.comparing(entry -> entry.getValue().getDuration()))
+                                            .limit(10)
+                                            .map(Map.Entry::getKey)
+                                            .collect(Collectors.toList());
+    }
 
     @Override
     public RouteSummary getRouteSummaryBetween(String startPostCodeStr, String destPostCodeStr, RouteType routeType) {
@@ -58,52 +83,4 @@ public class MappingServiceOpenStreetMapImpl implements MappingService {
         return String.format("%srouted-%s/route/v1/driving/%s,%s;%s,%s?overview=false&geometries=polyline",
                              BASE_URL, routeTypeStr, start.getLongitude(), start.getLatitude(), dest.getLongitude(), dest.getLatitude());
     }
-
-
-    @Value
-    private static class OpenStreetMapResponseEntity {
-
-    }
-
-
-//    {
-//  "code":"Ok",
-//  "waypoints":[
-//    {
-//      "hint":"kXhfl8V5X5cpAAAATAAAAIcBAAA9AAAA00jcQPg0S0ERoYJCPmw2QSkAAABMAAAAhwEAAD0AAAC0CAAAw9z__3yREgN03P__uJESAwMALwPklb1P",
-//      "location":[
-//        -0.009021,
-//        51.54854
-//      ],
-//      "name":"Victory Parade"
-//    },
-//    {
-//      "hint":"c3qxibd6sYneAAAASAAAAAAAAAAAAAAA4rzFQaFF0EEAAAAAAAAAAN4AAABIAAAAAAAAAAAAAAC0CAAA4kkNAPV1DAOQSQ0ADHYMAwAAzwzklb1P",
-//      "location":[
-//        0.870882,
-//        51.148277
-//      ],
-//      "name":"Bank Street"
-//    }
-//  ],
-//  "routes":[
-//    {
-//      "legs":[
-//        {
-//          "steps":[
-//
-//          ],
-//          "weight":21547.7,
-//          "distance":89369.9,
-//          "summary":"",
-//          "duration":21547.7
-//        }
-//      ],
-//      "weight_name":"duration",
-//      "weight":21547.7,
-//      "distance":89369.9,
-//      "duration":21547.7
-//    }
-//  ]
-//}
 }
