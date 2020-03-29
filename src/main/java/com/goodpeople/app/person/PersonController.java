@@ -1,7 +1,5 @@
 package com.goodpeople.app.person;
 
-import com.goodpeople.app.mapping.MappingService;
-import com.goodpeople.app.medicine.Medicine;
 import com.goodpeople.app.medicine.MedicineAndQuantity;
 import com.goodpeople.app.medicine.MedicineRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +20,6 @@ public class PersonController {
     public static final String API_V1 = "/api/v1/person";
 
     private final PersonRepository personRepository;
-    private final MappingService mappingService;
     private final PersonFactoryService personFactoryService;
     private final MedicineRepository medicineRepository;
 
@@ -51,12 +48,6 @@ public class PersonController {
         return personRepository.save(person);
     }
 
-    @GetMapping("/{id}")
-    public List<Person> getClosetPeopleWithMedicine(@PathVariable("id") String id,
-                                                    @RequestParam("medicine") String medicineId) {
-        Person person = personRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Unknown id"));
-        Medicine medicine = medicineRepository.findById(medicineId).orElseThrow(() -> new IllegalArgumentException("Unknown medicine id"));
-        return mappingService.get10QuickestDeliveryPeople(person, medicine);
-    }
+
 
 }
