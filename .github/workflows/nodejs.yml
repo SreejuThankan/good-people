@@ -29,7 +29,6 @@ jobs:
     - run: chmod 755 *
     - run: ls -rtl
     - run: npm install
-    - run: npm install -g @angular/cli/latest
     - run: ng build 
       env:
         CI: true
