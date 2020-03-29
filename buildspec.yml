@@ -1,0 +1,9 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+    - pwd
+    - ls -rtl
+    - chmod 755 *
+    - ./gradlew build

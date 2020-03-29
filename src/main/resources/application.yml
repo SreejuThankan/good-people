@@ -1,4 +1,13 @@
+server:
+  port: 9000
+
 spring:
   data:
     mongodb:
       uri: mongodb://localhost/test1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
