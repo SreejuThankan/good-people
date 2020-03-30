@@ -12,6 +12,7 @@ phases:
     - echo $PROJECT_DIR
     - ls -rtl
     - chmod -R 755 *
+    - mkdir -p $PROJECT_DIR/src/main/resources/static
     - echo "Running angular build"
     - ls -rtl
     - cd good-people-angular && npm install && npm install @angular/cli && npm run ng build --prod=true --outputPath=$PROJECT_DIR/src/main/resources/static
@@ -19,8 +20,7 @@ phases:
     - cd $PROJECT_DIR
     - ls -rtl
     - echo "Checking angular output location"
-    - ls -rtl $PROJECT_DIR/src/main/**/*
-    - ls -rtl $PROJECT_DIR/src/main/resources/**/*
+    - ls -rtl $PROJECT_DIR/src/main/resources/static
     - echo "Running gradle build"
     - ls -rtl
     - ./gradlew createDist
