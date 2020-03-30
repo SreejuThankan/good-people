@@ -18,7 +18,7 @@ phases:
     - cd ..
     - echo "Running gradle build"
     - ls -rtl
-    - cd ./gradlew createDist
+    - ./gradlew createDist
 
 artifacts:
   files:
