@@ -4,10 +4,9 @@ files:
 - source: payload.zip
   destination: /var/opt/apps/good-people/source
 hooks:
-  ApplicationStop:
+  BeforeInstall:
   - location: scripts/stop_front.sh
   - location: scripts/stop_back.sh
-  BeforeInstall:
   - location: scripts/clear_payload.sh
   AfterInstall:
   - location: scripts/unzip_payload.sh
