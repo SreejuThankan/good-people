@@ -27,7 +27,7 @@ springBoot {
 	buildInfo()
 }
 
-task createDist(type: Copy, group: 'build', dependsOn: build) {
+task createDist(type: Copy, group: 'build', dependsOn: war) {
 	destinationDir = file("$projectDir/")
 	from("$projectDir/deployment") {
 		include '**/*'
