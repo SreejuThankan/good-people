@@ -1,5 +1,3 @@
 #!/bin/bash
 echo "Deploying service"
-ls -rtl
-cd /var/opt/apps/good-people/source
-ls -rtl
+cp /var/opt/apps/good-people/source/back/* /var/opt/apps/good-people/back
