@@ -30,10 +30,10 @@ springBoot {
 task createPayload(type: Zip, group: 'build', dependsOn: build) {
 	archiveFileName = "payload.zip"
 	destinationDirectory = file("$buildDir/")
-	from("$projectDir/good-people-angular") {
-		include '**/*'
-		into 'front'
-	}
+//	from("$projectDir/good-people-angular") {
+//		include '**/*'
+//		into 'front'
+//	}
 	from("$buildDir/libs") {
 		include '**/*'
 		into 'back'
