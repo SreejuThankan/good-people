@@ -14,9 +14,11 @@ phases:
     - echo "Running angular build"
     - ls -rtl
     - cd good-people-angular && npm install && npm install @angular/cli && npm run ng build --prod=true --outputPath=../src/main/resources/static
+    - ls -rtl
+    - cd ..
     - echo "Running gradle build"
     - ls -rtl
-    - ../gradlew createDist
+    - cd ./gradlew createDist
 
 artifacts:
   files:
