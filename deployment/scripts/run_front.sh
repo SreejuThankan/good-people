@@ -10,7 +10,7 @@ npm install
 echo "Installing angular cli"
 npm install @angular/cli
 echo "Running ng build"
-ng build --prod=true --sourceMap=false 2> /dev/null
+ng build --prod=true --sourceMap=false 2> /var/opt/apps/good-people/logs/frontbuilderror.log
 echo "Running ng serve"
 ng serve > /var/opt/apps/good-people/logs/front.log 2> /var/opt/apps/good-people/logs/fronterror.log & echo $! > ../pids/front.pid
 sleep 30
