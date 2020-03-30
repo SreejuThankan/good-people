@@ -10,5 +10,6 @@ phases:
 
 artifacts:
   files:
-    - dist/**/*
-  base-directory: dist
+    - ./build/dist.zip
+  discard-paths: yes
+  name: dist.zip
