@@ -10,6 +10,6 @@ phases:
 
 artifacts:
   files:
-    - ./build/dist.zip
+    - deployment/appspec.yml
+    - build/dist.zip
   discard-paths: yes
-  name: dist.zip
