@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
 - source: payload.zip
-  destination: /var/opt/apps/good-people/source/
+  destination: /var/opt/apps/good-people/source
 hooks:
   BeforeInstall:
   - location: scripts/unzip_payload.sh
