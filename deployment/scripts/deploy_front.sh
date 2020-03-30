@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "Deploying UI"
-cd /var/opt/apps/good-people/source
 ls -rtl
-cd payload
+cd /var/opt/apps/good-people/source
 ls -rtl
