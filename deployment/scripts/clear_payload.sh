@@ -6,15 +6,9 @@ ls -rtl
 rm -rf *
 echo "After source cleaning"
 ls -rtl
-cd /var/opt/apps/good-people/front
-echo "Before front cleaning"
+cd /var/opt/apps/good-people/target
+echo "Before target cleaning"
 ls -rtl
 rm -rf *
-echo "After front cleaning"
-ls -rtl
-cd /var/opt/apps/good-people/back
-echo "Before back cleaning"
-ls -rtl
-rm -rf *
-echo "After back cleaning"
+echo "After target cleaning"
 ls -rtl
