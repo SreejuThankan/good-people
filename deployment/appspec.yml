@@ -3,16 +3,14 @@ os: linux
 files:
 - source: payload.zip
   destination: /var/opt/apps/good-people/source
-- source: ./payload.zip
-  destination: /var/opt/apps/good-people/source
-- source: /payload.zip
-  destination: /var/opt/apps/good-people/source/
 hooks:
   BeforeInstall:
+  - location: scripts/stop_front.sh
+  - location: scripts/stop_back.sh
+  AfterInstall:
   - location: scripts/unzip_payload.sh
   - location: scripts/deploy_front.sh
   - location: scripts/deploy_back.sh
-  AfterInstall:
   - location: scripts/install_front.sh
     timeout: 1000
   ApplicationStart:

@@ -1,4 +1,4 @@
 #!/bin/bash
-echo "Running the UI"
+echo "Stopping the UI"
 cd /var/opt/apps/good-people/source
 ls -rtl
