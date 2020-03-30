@@ -43,9 +43,9 @@ task createPayload(type: Zip, group: 'build', dependsOn: build) {
 
 task createDist(type: Copy, group: 'build', dependsOn: createPayload) {
 	doFirst {
-		mkdir("$buildDir/dist")
+		mkdir("dist")
 	}
-	destinationDir = file("$buildDir/dist")
+	destinationDir = file("dist")
 	from("$projectDir/deployment") {
 		include '**/*'
 	}
