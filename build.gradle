@@ -27,6 +27,17 @@ springBoot {
 	buildInfo()
 }
 
+task createDist(type: Copy, group: 'build', dependsOn: build) {
+	destinationDir = file("$projectDir/")
+	from("$projectDir/deployment") {
+		include '**/*'
+	}
+	from("$buildDir/libs") {
+		include '**/*'
+		rename '.*', 'service.war'
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
