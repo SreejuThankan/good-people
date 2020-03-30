@@ -27,6 +27,31 @@ springBoot {
 	buildInfo()
 }
 
+task createPayload(type: Zip, group: 'build', dependsOn: build) {
+	archiveFileName = "payload.zip"
+	destinationDirectory = file("$buildDir/")
+	from("$projectDir/good-people-angular") {
+		include '**/*'
+		into 'front'
+	}
+	from("$buildDir/libs") {
+		include '**/*'
+		into 'back'
+		rename '.*', 'service.war'
+	}
+}
+
+task createDist(type: Zip, group: 'build', dependsOn: createPayload) {
+	archiveFileName = "dist.zip"
+	destinationDirectory = file("$buildDir/")
+	from("$projectDir/deployment") {
+		include '**/*'
+	}
+	from("$buildDir/") {
+		include 'payload.zip'
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'

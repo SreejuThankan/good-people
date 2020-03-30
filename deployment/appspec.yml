@@ -1,0 +1,23 @@
+version: 0.0
+os: linux
+files:
+- source: /payload.zip
+  destination: /var/opt/apps/good-people/source/
+hooks:
+  BeforeInstall:
+  - location: scripts/unzip_payload.sh
+  - location: scripts/deploy_front.sh
+  - location: scripts/deploy_back.sh
+  AfterInstall:
+  - location: scripts/install_front.sh
+    timeout: 1000
+  ApplicationStart:
+  - location: scripts/run_back.sh
+    timeout: 3600
+  - location: scripts/run_front.sh
+    timeout: 3600
+  ValidateService:
+  - location: scripts/check_back.sh
+    timeout: 3600
+  - location: scripts/check_front.sh
+    timeout: 3600
