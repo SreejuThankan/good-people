@@ -9,6 +9,8 @@ phases:
   build:
     commands:
     - pwd
+    - PROJECT_DIR=$(pwd)
+    - echo $PROJECT_DIR
     - ls -rtl
     - chmod -R 755 *
     - echo "Running angular build"
@@ -17,7 +19,9 @@ phases:
     - ls -rtl
     - cd ..
     - echo "Checking angular output location"
-    - ls -rtl ./src/main/resources/static
+    - ls -rtl
+    - ls -rtl **/*
+    - ls -rtl src/main/resources/static
     - echo "Running gradle build"
     - ls -rtl
     - ./gradlew createDist
