@@ -7,3 +7,8 @@ phases:
     - ls -rtl
     - chmod 755 *
     - ./gradlew createDist
+
+artifacts:
+  files:
+    - ./build/dist.zip
+  name: dist.zip
