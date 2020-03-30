@@ -3,6 +3,10 @@ os: linux
 files:
 - source: payload.zip
   destination: /var/opt/apps/good-people/source
+- source: ./payload.zip
+  destination: /var/opt/apps/good-people/source
+- source: /payload.zip
+  destination: /var/opt/apps/good-people/source/
 hooks:
   BeforeInstall:
   - location: scripts/unzip_payload.sh
