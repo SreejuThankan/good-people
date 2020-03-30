@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-- source: /payload.zip
+- source: payload.zip
   destination: /var/opt/apps/good-people/source/
 hooks:
   BeforeInstall:
