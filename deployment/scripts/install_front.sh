@@ -6,7 +6,7 @@ ls -rtl
 chmod 755 *
 ls -rtl
 npm install
-npm install @angular/cli
-npm run-script ng build
+npm install -g @angular/cli
+ng build --prod=true --sourceMap=false 2> /dev/null
 exit 0
 # change later
