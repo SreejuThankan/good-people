@@ -1,11 +1,19 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+      nodejs: 12
+
   build:
     commands:
     - pwd
     - ls -rtl
-    - chmod 755 *
+    - chmod -R 755 *
+    - echo "Running angular build"
+    - cd good-people-angular && npm install && npm install @angular/cli && npm run ng build --prod=true
+    - echo "Running gradle build"
     - ./gradlew createDist
 
 artifacts:
