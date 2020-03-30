@@ -6,4 +6,4 @@ phases:
     - pwd
     - ls -rtl
     - chmod 755 *
-    - ./gradlew build
+    - ./gradlew createDist
