@@ -23,6 +23,12 @@ export class HomeComponent implements OnInit {
 
   createdPerson: any;
 
+  providePostcode: string;
+  provideMedicine: string;
+
+  requestPostcode: string;
+  requestMedicine: string;
+
   postcodeToCheck: string;
 
   constructor(
@@ -43,7 +49,23 @@ export class HomeComponent implements OnInit {
       postCode: this.postcode,
       phoneNo: this.phoneNo,
       email: this.email
-    });
+    }).subscribe(
+      data => {
+        console.log('Created user ' + data);
+      },
+      error => {
+        this.nbToastrService.danger('Error when creating user', 'Error');
+        console.error(error);
+      }
+    );
+  }
+
+  confirmProvide(): void {
+    console.log('Providing ' + this.provideMedicine + ' from postcode ' + this.providePostcode);
+  }
+
+  confirmRequest(): void {
+    console.log('Requesting ' + this.requestMedicine + ' for postcode ' + this.requestPostcode);
   }
 
   checkPostcode(): void {

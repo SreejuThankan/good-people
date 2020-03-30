@@ -31,27 +31,30 @@
             </nb-card-footer>
         </nb-card>
 
-        <nb-card>
-            <nb-card-header>Want to help?</nb-card-header>
-            <nb-card-body>
-                <div>Provide the medicine that you have</div>
-            </nb-card-body>
-            <nb-card-footer>
-                <button nbButton>Confirm</button>
-            </nb-card-footer>
-        </nb-card>
+        <div class="card-row">
+            <nb-card class="card-col">
+                <nb-card-header>Want to help? Fill in the medicine that you can supply below.</nb-card-header>
+                <nb-card-body>
+                    Your postcode: <input type="text" [(ngModel)]="providePostcode" nbInput placeholder="Postcode">
+                    Medicine to provide: <input type="text" [(ngModel)]="provideMedicine" nbInput placeholder="Medicine">
+                </nb-card-body>
+                <nb-card-footer>
+                    <button nbButton (click)="confirmProvide()">Confirm</button>
+                </nb-card-footer>
+            </nb-card>
+            <nb-card class="card-col">
+                <nb-card-header>Need help? Fill in the medicine that you need below.</nb-card-header>
+                <nb-card-body>
+                    Your postcode: <input type="text" [(ngModel)]="requestPostcode" nbInput placeholder="Postcode">
+                    Medicine to request: <input type="text" [(ngModel)]="requestMedicine" nbInput placeholder="Medicine">
+                </nb-card-body>
+                <nb-card-footer>
+                    <button nbButton (click)="confirmRequest()">Confirm</button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
 
-        <nb-card>
-            <nb-card-header>Need help?</nb-card-header>
-            <nb-card-body>
-                <div>Provide the medicine that you need</div>
-            </nb-card-body>
-            <nb-card-footer>
-                <button nbButton>Confirm</button>
-            </nb-card-footer>
-        </nb-card>
-
-        <nb-card>
+        <!-- <nb-card>
             <nb-card-header>Check Postcode</nb-card-header>
             <nb-card-body>
                 <div>Check your postcode and pin where you are</div>
@@ -62,10 +65,10 @@
             <nb-card-footer>
                 <button nbButton (click)="checkPostcode()">Check Postcode</button>
             </nb-card-footer>
-        </nb-card>
+        </nb-card> -->
         
-
         <app-map #map></app-map>
+        
     </nb-layout-column>
 
     <nb-layout-footer fixed>Created with ♥ by SRJ 2020</nb-layout-footer>
