@@ -10,5 +10,5 @@ phases:
 
 artifacts:
   files:
-    - ./build/dist/*
-  base-directory: dist
+    - ./build/dist/**/*
+  base-directory: ./build/dist
