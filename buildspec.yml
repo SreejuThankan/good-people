@@ -15,8 +15,9 @@ phases:
     - mkdir -p $PROJECT_DIR/src/main/resources/static
     - echo "Running angular build"
     - ls -rtl
-    - cd good-people-angular && npm install && npm install @angular/cli && npm run ng build --prod=true --outputPath=$PROJECT_DIR/src/main/resources/static
+    - cd good-people-angular && npm install && npm install @angular/cli && npm run ng build --prod=true
     - ls -rtl
+    - cp $PROJECT_DIR/good-people-angular/dist/good-people-angular $PROJECT_DIR/src/main/resources/static
     - cd $PROJECT_DIR
     - ls -rtl
     - echo "Checking angular output location"
@@ -25,6 +26,9 @@ phases:
     - ls -rtl
     - ./gradlew createDist
     - echo "Done gradle createDist"
+    - echo "Checking build output"
+    - ls -rtl $PROJECT_DIR/build/libs
+    - echo "Final main directory"
     - ls -rtl
 
 artifacts:
