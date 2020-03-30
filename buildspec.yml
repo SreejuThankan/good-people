@@ -16,12 +16,12 @@ phases:
     - echo "Running angular build"
     - ls -rtl
     - cd good-people-angular && npm install && npm install @angular/cli && npm run ng build --prod=true
-    - ls -rtl
-    - cp $PROJECT_DIR/good-people-angular/dist/good-people-angular $PROJECT_DIR/src/main/resources/static
-    - cd $PROJECT_DIR
-    - ls -rtl
-    - echo "Checking angular output location"
+    - echo "Copy source"
+    - ls -rtl $PROJECT_DIR/good-people-angular/dist/good-people-angular
+    - cp $PROJECT_DIR/good-people-angular/dist/good-people-angular/* $PROJECT_DIR/src/main/resources/static
+    - echo "Copy output"
     - ls -rtl $PROJECT_DIR/src/main/resources/static
+    - cd $PROJECT_DIR
     - echo "Running gradle build"
     - ls -rtl
     - ./gradlew createDist
