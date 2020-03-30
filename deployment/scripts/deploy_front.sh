@@ -1,5 +1,3 @@
 #!/bin/bash
 echo "Deploying UI"
-ls -rtl
-cd /var/opt/apps/good-people/source
-ls -rtl
+cp /var/opt/apps/good-people/source/front/* /var/opt/apps/good-people/front
