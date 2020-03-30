@@ -12,8 +12,6 @@ hooks:
   - location: scripts/unzip_payload.sh
   - location: scripts/deploy_front.sh
   - location: scripts/deploy_back.sh
-  - location: scripts/install_front.sh
-    timeout: 1000
   ApplicationStart:
   - location: scripts/run_back.sh
     timeout: 3600
