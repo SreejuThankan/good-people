@@ -7,3 +7,9 @@ phases:
     - ls -rtl
     - chmod 755 *
     - ./gradlew createDist
+
+artifacts:
+  files:
+    - appspec.yml
+    - scripts/*
+    - payload.zip
