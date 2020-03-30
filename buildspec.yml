@@ -12,12 +12,14 @@ phases:
     - ls -rtl
     - chmod -R 755 *
     - echo "Running angular build"
-    - cd good-people-angular && npm install && npm install @angular/cli && npm run ng build --prod=true
+    - ls -rtl
+    - cd good-people-angular && npm install && npm install @angular/cli && npm run ng build --prod=true --outputPath=../src/main/resources/static
     - echo "Running gradle build"
-    - ./gradlew createDist
+    - ls -rtl
+    - ../gradlew createDist
 
 artifacts:
   files:
     - appspec.yml
     - scripts/*
-    - payload.zip
+    - service.war

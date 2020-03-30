@@ -1,24 +1,17 @@
 version: 0.0
 os: linux
 files:
-- source: payload.zip
+- source: service.war
   destination: /var/opt/apps/good-people/source
 hooks:
   BeforeInstall:
-  - location: scripts/stop_front.sh
-  - location: scripts/stop_back.sh
+  - location: scripts/stop_service.sh
   - location: scripts/clear_payload.sh
   AfterInstall:
-  - location: scripts/unzip_payload.sh
-  - location: scripts/deploy_front.sh
-  - location: scripts/deploy_back.sh
+  - location: scripts/deploy_service.sh
   ApplicationStart:
-  - location: scripts/run_back.sh
-    timeout: 3600
-  - location: scripts/run_front.sh
+  - location: scripts/run_service.sh
     timeout: 3600
   ValidateService:
-  - location: scripts/check_back.sh
-    timeout: 3600
-  - location: scripts/check_front.sh
+  - location: scripts/check_service.sh
     timeout: 3600

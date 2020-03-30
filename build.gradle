@@ -27,24 +27,14 @@ springBoot {
 	buildInfo()
 }
 
-task createPayload(type: Zip, group: 'build', dependsOn: build) {
-	archiveFileName = "payload.zip"
-	destinationDirectory = file("$projectDir/")
-	from("$projectDir/good-people-angular/dist/good-people-angular") {
-		include '**/*'
-		into 'front'
-	}
-	from("$buildDir/libs") {
-		include '**/*'
-		into 'back'
-		rename '.*', 'service.war'
-	}
-}
-
-task createDist(type: Copy, group: 'build', dependsOn: createPayload) {
+task createDist(type: Copy, group: 'build', dependsOn: build) {
 	destinationDir = file("$projectDir/")
 	from("$projectDir/deployment") {
 		include '**/*'
+	}
+	from("$buildDir/libs") {
+		include '**/*'
+		rename '.*', 'service.war'
 	}
 }
 
